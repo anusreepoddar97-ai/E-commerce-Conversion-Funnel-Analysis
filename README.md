@@ -40,8 +40,7 @@ To convert abandoned carts and recover lost revenue, the business should impleme
 3.  **Visualization (`dashboard/`):** Connected the simulated data to Tableau to build an executive-facing dashboard focusing on funnel friction and revenue impact.
 
 #### Data Model (Entity-Relationship Diagram)
-*(Replace this image with your "tree-like connection" screenshot)*
-![Database Schema] 
+
 mermaiderDiagram
     USERS ||--o{ EVENTS : "performs"
     PRODUCTS ||--o{ EVENTS : "is_part_of"
