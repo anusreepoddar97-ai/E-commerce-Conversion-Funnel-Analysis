@@ -56,7 +56,7 @@ erDiagram
         INT product_id PK
         VARCHAR(100) product_name
         VARCHAR(50) category
-        DECIMAL(102) price
+        DECIMAL price
     }
 
     EVENTS {
