@@ -13,7 +13,7 @@ Built an end-to-end data pipeline to simulate, process, and analyze e-commerce u
 ### 📊 Interactive Dashboard
 *(Note: I recommend downloading the `.twb` file below to view the interactive dashboard and inspect the underlying calculated fields.)*
 
-![E-Commerce Funnel Dashboard](dashboard/ecommerce_funnel_dashboard.jpg)
+![E-Commerce Funnel Dashboard](dashboard/ecommerce_funnel_dashboard.jpeg)
 
 *👉 **Technical Reviewers:** [Download the Tableau Packaged Workbook](dashboard/workbook.twb) to interact with the dashboard and inspect the underlying data, calculations, and joins.*
 
@@ -41,7 +41,32 @@ To convert abandoned carts and recover lost revenue, the business should impleme
 
 #### Data Model (Entity-Relationship Diagram)
 *(Replace this image with your "tree-like connection" screenshot)*
-![Database Schema](dashboard/ecommerce_funnel_dashboard.jpeg)
+![Database Schema]
+```mermaid
+erDiagram
+    USERS ||--o{ EVENTS : "performs"
+    PRODUCTS ||--o{ EVENTS : "is_part_of"
+
+    USERS {
+        INT user_id PK
+        DATE signup_date
+        VARCHAR(50) device_type
+    }
+
+    PRODUCTS {
+        INT product_id PK
+        VARCHAR(100) product_name
+        VARCHAR(50) category
+        DECIMAL(10,2) price
+    }
+
+    EVENTS {
+        INT event_id PK
+        INT user_id FK
+        INT product_id FK
+        TIMESTAMP event_time
+        VARCHAR(50) event_type
+    }
 
 ---
 
