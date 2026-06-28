@@ -11,11 +11,11 @@ Built an end-to-end data pipeline to simulate, process, and analyze e-commerce u
 ---
 
 ### 📊 Interactive Dashboard
-*(Note: I recommend downloading the `.twbx` file below to view the interactive dashboard and inspect the underlying calculated fields.)*
+*(Note: I recommend downloading the `.twb` file below to view the interactive dashboard and inspect the underlying calculated fields.)*
 
 ![E-Commerce Funnel Dashboard](dashboard/ecommerce_funnel_dashboard.jpg)
 
-*👉 **Technical Reviewers:** [Download the Tableau Packaged Workbook (.twbx)](dashboard/your_workbook_name.twbx) to interact with the dashboard and inspect the underlying data, calculations, and joins.*
+*👉 **Technical Reviewers:** [Download the Tableau Packaged Workbook](dashboard/workbook.twb) to interact with the dashboard and inspect the underlying data, calculations, and joins.*
 
 ---
 
