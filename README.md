@@ -1,53 +1,51 @@
-E-Commerce Funnel & Revenue Leakage Analysis
+# 🛒 E-Commerce Funnel & Revenue Leakage Analysis
 
-📌 Project Overview
+### Executive Summary
+Built an end-to-end data pipeline to simulate, process, and analyze e-commerce user journeys. By generating realistic consumer traffic and tracking user events through a normalized SQL database, this project identifies a major drop-off point at the checkout stage and quantifies abandoned cart revenue leakage to drive actionable business interventions.
 
-This project is an end-to-end data analytics pipeline designed to identify revenue leakage within an e-commerce purchasing funnel. By simulating a relational database of user behavior, modeling the data in Tableau, and utilizing custom calculated fields, this dashboard isolates exact drop-off points in the customer journey and highlights top-performing products.
+### 🛠 The Tech Stack
+*   **Data Generation & Pipeline:** Python (`pandas`, `Faker`)
+*   **Database & Analytics:** SQL (CTEs, Window Functions, Aggregations)
+*   **Data Visualization:** Tableau 
 
-🔗 View the Interactive Tableau Dashboard Here (<-- Insert your Tableau Public link here before sharing!)
+---
 
-🛠️ Tech Stack
+### 📊 Interactive Dashboard
+*(Note: I recommend downloading the `.twbx` file below to view the interactive dashboard and inspect the underlying calculated fields.)*
 
-Python (Pandas, Faker): Synthetic data generation and ETL simulation.
+![E-Commerce Funnel Dashboard](dashboard/ecommerce_funnel_dashboard.jpg)
 
-Tableau: Data visualization, relational data modeling, custom calculated fields, and interactive dashboard design.
+*👉 **Technical Reviewers:** [Download the Tableau Packaged Workbook (.twbx)](dashboard/your_workbook_name.twbx) to interact with the dashboard and inspect the underlying data, calculations, and joins.*
 
-Data Architecture: Relational CSV models (Users, Products, Events).
+---
 
-💼 The Business Problem
+### 💡 Key Business Insights
+Based on the funnel analysis of 1,000 simulated users across desktop, mobile, and tablet devices:
 
-An e-commerce company is seeing high top-of-funnel traffic but a lower-than-expected final conversion rate. Stakeholders need to answer three core questions:
+1.  **Critical Checkout Drop-off:** The steepest decline in the user journey occurs at the checkout stage, with a **47.80% drop-off** between users initiating a checkout and actually completing the purchase.
+2.  **High-Value Revenue Leakage:** The "Smart Watch" is the highest revenue-generating product ($21,500), but it also represents the highest potential revenue leakage if those specific items are abandoned in the cart.
+3.  **Mobile Dominance:** Mobile devices account for the vast majority of platform traffic (over 60%), indicating that the mobile checkout experience must be heavily optimized.
 
-At which specific stage of the checkout process are users abandoning the platform?
+### 🎯 Strategic Recommendations
+To convert abandoned carts and recover lost revenue, the business should implement:
+*   **Targeted Recovery Campaigns:** Trigger an automated, personalized email or push notification sequence within 1 hour for users who abandon high-ticket items (like the Smart Watch) at the checkout stage.
+*   **Frictionless Mobile Checkout:** Given the high mobile traffic and steep checkout drop-off, audit the mobile UI/UX to implement one-click payment solutions (e.g., Apple Pay, Google Pay).
 
-Which products are driving the most actual revenue (completed purchases), rather than just generating page views?
+---
 
-How is platform traffic distributed across device types to inform UI/UX optimization?
+### 🏗 Architecture & Workflow
 
-📊 Methodology & Execution
+1.  **Simulation Pipeline (`mock_data_pipeline.py`):** Engineered a Python script utilizing `pandas` and the `Faker` library to generate realistic user demographics, product catalogs, and timestamped behavioral events (page views, cart additions, checkouts, and purchases).
+2.  **Data Modeling & Transformation (`E-Commerce Funnel.sql`):** Designed a normalized relational schema for Users, Products, and Events. Wrote advanced SQL queries utilizing Common Table Expressions (CTEs) and `LAG()` Window Functions to calculate step-by-step conversion rates and isolate missed sales.
+3.  **Visualization (`dashboard/`):** Connected the simulated data to Tableau to build an executive-facing dashboard focusing on funnel friction and revenue impact.
 
-Data Engineering (Python): Engineered a Python script (generate_ecommerce_data.py) to generate a synthetic dataset spanning three relational tables: users.csv, products.csv, and events.csv. The script utilized weighted probabilities to simulate realistic conversion drop-offs and platform preferences.
+#### Data Model (Entity-Relationship Diagram)
+*(Replace this image with your "tree-like connection" screenshot)*
+![Database Schema](dashboard/ecommerce_funnel_dashboard.jpeg)
 
-Data Modeling: Connected the disparate CSVs using relational modeling (Primary/Foreign Keys) directly within Tableau to form a unified data source.
+---
 
-Data Cleaning & Custom Calculations: Diagnosed a data duplication issue where product prices were aggregating incorrectly across all non-purchase event types due to the relational joins. Engineered a custom Calculated Field (COUNT([Event Id]) * MAX([Price])) to accurately isolate and calculate true revenue based solely on completed purchase events.
-
-Advanced Visualizations & UI Design:
-
-Utilized Quick Table Calculations (Percent Difference) to calculate step-by-step funnel drop-off percentages.
-
-Applied business aliasing to raw database strings (e.g., transforming page_view to 1. Product Views) for executive readability.
-
-Designed a cohesive, dark-mode UI with high-contrast, color-coordinated elements to focus stakeholder attention on actionable metrics and establish visual hierarchy.
-
-💡 Key Business Insights
-
-Based on the dashboard analysis, several key insights were uncovered:
-
-Critical Funnel Bottleneck: The most significant revenue leak occurs in the middle of the funnel, with a -47.80% drop-off between users who add an item to their cart and those who actually initiate checkout.
-
-Revenue Drivers: The Smart Watch is the strongest performer by a wide margin, driving $21,500 in actual revenue.
-
-Platform Optimization Need: Mobile traffic absolutely dominates the platform, accounting for over 60% of all events (2,618 out of 4,350 total interactions). Given the high cart abandonment rate, this suggests the mobile checkout UI specifically requires urgent optimization.
-
-Built for data analytics portfolio presentation.
+### 🚀 How to Run the Project
+1.  Clone this repository.
+2.  Run `mock_data_pipeline.py` in your terminal to generate the raw `users.csv`, `products.csv`, and `events.csv` files.
+3.  Execute `E-Commerce Funnel.sql` in your preferred SQL environment to build the tables and run the analytical queries.
