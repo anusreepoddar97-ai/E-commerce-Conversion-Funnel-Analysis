@@ -66,16 +66,5 @@ erDiagram
         TIMESTAMP event_time
         VARCHAR(50) event_type
     }
----
-
-
-
-### 🚀 How to Run the Project
-
-1.  Clone this repository.
-
-2.  Run `mock_data_pipeline.py` in your terminal to generate the raw `users.csv`, `products.csv`, and `events.csv` files.
-
-3.  Execute `E-Commerce Funnel.sql` in your preferred SQL environment to build the tables and run the analytical queries. 
 
 
