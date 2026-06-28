@@ -41,9 +41,8 @@ To convert abandoned carts and recover lost revenue, the business should impleme
 
 #### Data Model (Entity-Relationship Diagram)
 *(Replace this image with your "tree-like connection" screenshot)*
-![Database Schema]
-```mermaid
-erDiagram
+![Database Schema] 
+mermaiderDiagram
     USERS ||--o{ EVENTS : "performs"
     PRODUCTS ||--o{ EVENTS : "is_part_of"
 
